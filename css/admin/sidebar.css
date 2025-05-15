@@ -1,0 +1,40 @@
+/* Sidebar container */
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background-color: var(--color-primary-dark);
+}
+
+/* Brand/logo */
+.sidebar .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* Sidebar nav items */
+.sidebar .nav-link {
+    color: var(--color-neutral-grey);
+    padding: 0.75rem 1rem;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 0.375rem;
+}
+
+/* Hover effect */
+.sidebar .nav-link:hover {
+    background-color: var(--color-primary-accent);
+    color: white;
+}
+
+/* Active link - you can apply 'active' class manually or via JS/PHP */
+.sidebar .nav-link.active,
+.sidebar .nav-link:focus {
+    background-color: var(--color-primary-accent);
+    color: white;
+    font-weight: bold;
+}
+
+/* Sidebar icons */
+.sidebar .nav-link i {
+    margin-right: 8px;
+}

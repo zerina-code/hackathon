@@ -1,0 +1,26 @@
+header {
+    background-color: var(--color-bg-light);
+    border-bottom: 1px solid var(--color-neutral-grey);
+    padding: 15px 20px;
+}
+
+header .gap-3 > * {
+    margin-left: 1rem;
+}
+
+.btn-outline-secondary {
+    color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--color-primary-accent);
+    color: white;
+    border-color: var(--color-primary-accent);
+}
+
+.badge-danger {
+    background-color: var(--color-secondary-yellow);
+    color: black;
+    font-weight: bold;
+}

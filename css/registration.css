@@ -228,3 +228,39 @@ input:focus {
         flex-direction: column;
     }
 }
+
+input[type="date"] {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid var(--color-bg-light);
+    border-radius: 4px;
+    width: 100%;
+    background-color: var(--color-neutral-grey);
+    color: var(--color-text-muted);
+    box-sizing: border-box;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.5);
+    cursor: pointer;
+}
+
+.signup-only {
+    display: none;
+}
+.signup-mode .signup-only {
+    display: block;
+}
+/* Error message styling */
+.error-message {
+    color: #d8000c;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+
+/* Highlight the input border when there is an error */
+.input-group input.input-error {
+    border: 1px solid #d8000c;
+    background-color: #ffecec;
+}

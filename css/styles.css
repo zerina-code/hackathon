@@ -1,0 +1,32 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main {
+    /*width: 1200px;*/
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary-dark);
+}
+:root {
+    /* Primary colors */
+    --color-primary-dark: #2E2E2E;
+    --color-primary-accent: #00B2A9;
+
+    /* Secondary colors - za obavjestenja */
+    --color-secondary-yellow: #FFC20E;
+    --color-secondary-purple: #8E7CC3;
+
+    /* Neutral colors */
+    --color-bg-light: #FAF9F6;
+    --color-neutral-grey: #CCCCCC;
+    --color-text-black: #000000;
+
+    /* Borders */
+    --color-text-muted: #666666;
+}

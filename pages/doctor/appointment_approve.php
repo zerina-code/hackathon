@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Approve Appointments</title>
-    <link href="/assets/bootstrap.min.css" rel="stylesheet">
+<!--    <link href="/assets/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="/css/doctor/doctor.css">
+
+
 </head>
 <body>
 <div class="container mt-4">

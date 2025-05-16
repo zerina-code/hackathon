@@ -1,6 +1,5 @@
 <?php
 include_once '../../components/table-component.php';
-
 $appointments = [
     [
         'doctorName' => 'Dr. Ruby Perrin',
@@ -8,7 +7,6 @@ $appointments = [
         'patientName' => 'John Doe',
         'time' => '2025-05-12 10:30 AM',
         'status' => true,
-        'amount' => '$150',
     ],
     [
         'doctorName' => 'Dr. Darren Smith',
@@ -16,7 +14,6 @@ $appointments = [
         'patientName' => 'Maria Gonzales',
         'time' => '2025-05-13 02:15 PM',
         'status' => false,
-        'amount' => '$200',
     ],
     [
         'doctorName' => 'Dr. Linda Taylor',
@@ -24,7 +21,55 @@ $appointments = [
         'patientName' => 'Steve Brown',
         'time' => '2025-05-14 09:00 AM',
         'status' => true,
-        'amount' => '$175',
+    ],
+    [
+        'doctorName' => 'Dr. Emily Stone',
+        'speciality' => 'Orthopedics',
+        'patientName' => 'Olivia Martinez',
+        'time' => '2025-05-15 11:00 AM',
+        'status' => true,
+    ],
+    [
+        'doctorName' => 'Dr. Brian Clark',
+        'speciality' => 'Pediatrics',
+        'patientName' => 'Sophia Rodriguez',
+        'time' => '2025-05-16 03:45 PM',
+        'status' => true,
+    ],
+    [
+        'doctorName' => 'Dr. Sarah Williams',
+        'speciality' => 'Dermatology',
+        'patientName' => 'James Wilson',
+        'time' => '2025-05-17 01:30 PM',
+        'status' => false,
+    ],
+    [
+        'doctorName' => 'Dr. Thomas Harris',
+        'speciality' => 'Psychiatry',
+        'patientName' => 'Michael Brown',
+        'time' => '2025-05-18 09:30 AM',
+        'status' => true,
+    ],
+    [
+        'doctorName' => 'Dr. Clara Johnson',
+        'speciality' => 'Obstetrics',
+        'patientName' => 'Sarah Davis',
+        'time' => '2025-05-19 04:00 PM',
+        'status' => true,
+    ],
+    [
+        'doctorName' => 'Dr. Peter Green',
+        'speciality' => 'Gastroenterology',
+        'patientName' => 'David Garcia',
+        'time' => '2025-05-20 10:15 AM',
+        'status' => false,
+    ],
+    [
+        'doctorName' => 'Dr. Alice Johnson',
+        'speciality' => 'Cardiology',
+        'patientName' => 'Emily Johnson',
+        'time' => '2025-05-21 02:00 PM',
+        'status' => true,
     ],
 ];
 

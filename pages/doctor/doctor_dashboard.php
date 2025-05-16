@@ -72,16 +72,16 @@
 </div>
 
 <!-- Bootstrap JS for modals -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    // Optional: populate hidden input with patient ID when opening modal
-    const reportModal = document.getElementById('reportModal');
-    reportModal.addEventListener('show.bs.modal', function (event) {
-        const button = event.relatedTarget;
-        const patientId = button.getAttribute('data-patient-id');
-        document.getElementById('reportPatientId').value = patientId;
-    });
-</script>
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--<script>-->
+<!--    // Optional: populate hidden input with patient ID when opening modal-->
+<!--    const reportModal = document.getElementById('reportModal');-->
+<!--    reportModal.addEventListener('show.bs.modal', function (event) {-->
+<!--        const button = event.relatedTarget;-->
+<!--        const patientId = button.getAttribute('data-patient-id');-->
+<!--        document.getElementById('reportPatientId').value = patientId;-->
+<!--    });-->
+<!--</script>-->
 
 </body>
 </html>

@@ -28,15 +28,27 @@
         <nav class="col-md-2 d-none d-md-block bg-light sidebar py-4">
             <div class="position-sticky">
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link" href="/doctor/doctor_dashboard.php">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/doctor/patients_list.php">Patients</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/doctor/create_medical_report.php">Create Report</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/doctor/add_diagnostic_procedure.php">Add Procedure</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/doctor/view_medical_records.php">Medical Records</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/doctor/view_medical_orders.php">Medical Orders</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">Write Prescription</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/doctor/all_perscriptions.php">All Prescriptions</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/doctor/appointment_approve.php">Appointments</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="doctor_dashboard.php">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="patients_list.php">Patients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="add_diagnostic_procedure.php">Add Procedure</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="view_medical_records.php">Medical Records</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="view_medical_orders.php">Medical Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="all_perscriptions.php">Prescriptions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="appointment_approve.php">Appointments</a>
+                    </li>
                 </ul>
             </div>
         </nav>

@@ -1,6 +1,5 @@
 <?php
 include_once '../../components/table-component.php';
-
 $patients = [
     [
         'name' => 'John Doe',
@@ -10,21 +9,71 @@ $patients = [
         'lastVisit' => '2025-05-10',
     ],
     [
-        'name' => 'John Doe',
-        'dob' => '1985-04-12',
-        'address' => '123 Elm Street, Springfield',
-        'phone' => '(123) 456-7890',
-        'lastVisit' => '2025-05-10',
+        'name' => 'Jane Smith',
+        'dob' => '1992-07-22',
+        'address' => '456 Maple Avenue, Shelbyville',
+        'phone' => '(987) 654-3210',
+        'lastVisit' => '2025-04-28',
     ],
     [
-        'name' => 'John Doe',
-        'dob' => '1985-04-12',
-        'address' => '123 Elm Street, Springfield',
-        'phone' => '(123) 456-7890',
-        'lastVisit' => '2025-05-10',
-    ],]
-;
+        'name' => 'Emily Johnson',
+        'dob' => '1990-03-15',
+        'address' => '789 Oak Street, Capital City',
+        'phone' => '(555) 123-4567',
+        'lastVisit' => '2025-05-05',
+    ],
+    [
+        'name' => 'Michael Brown',
+        'dob' => '1980-11-30',
+        'address' => '101 Pine Road, Springfield',
+        'phone' => '(111) 222-3333',
+        'lastVisit' => '2025-03-15',
+    ],
+    [
+        'name' => 'Sarah Davis',
+        'dob' => '1995-09-04',
+        'address' => '202 Birch Lane, Shelbyville',
+        'phone' => '(444) 555-6666',
+        'lastVisit' => '2025-04-30',
+    ],
+    [
+        'name' => 'James Wilson',
+        'dob' => '1978-01-20',
+        'address' => '303 Cedar Boulevard, Capital City',
+        'phone' => '(777) 888-9999',
+        'lastVisit' => '2025-02-12',
+    ],
+    [
+        'name' => 'Olivia Martinez',
+        'dob' => '2000-06-10',
+        'address' => '404 Willow Avenue, Springfield',
+        'phone' => '(333) 444-5555',
+        'lastVisit' => '2025-05-02',
+    ],
+    [
+        'name' => 'David Garcia',
+        'dob' => '1983-12-05',
+        'address' => '505 Fir Street, Shelbyville',
+        'phone' => '(666) 777-8888',
+        'lastVisit' => '2025-01-30',
+    ],
+    [
+        'name' => 'Sophia Rodriguez',
+        'dob' => '1993-08-19',
+        'address' => '606 Chestnut Drive, Capital City',
+        'phone' => '(888) 999-0000',
+        'lastVisit' => '2025-04-25',
+    ],
+    [
+        'name' => 'Benjamin Lee',
+        'dob' => '1989-10-13',
+        'address' => '707 Redwood Avenue, Springfield',
+        'phone' => '(555) 777-8888',
+        'lastVisit' => '2025-05-09',
+    ],
+];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

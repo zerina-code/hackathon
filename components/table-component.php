@@ -5,9 +5,9 @@ function renderTable($type, $data) {
 
     // Define columns by table type
     if ($type === 'appointments') {
-        $columns = ['Doctor Name', 'Speciality', 'Patient Name', 'Appointment Time', 'Status', 'Amount'];
+        $columns = ['Doctor Name', 'Speciality', 'Patient Name', 'Appointment Time', 'Status'];
     } elseif ($type === 'doctors') {
-        $columns = ['Picture', 'Name', 'Speciality', 'Member Since', 'Number of Patients', 'Review','Account Status'];
+        $columns = ['Picture', 'Name', 'Speciality', 'Number of Patients', 'Review','Account Status'];
     } elseif ($type === 'patients') {
         $columns = ['Name', 'Date of Birth', 'Address', 'Phone Number', 'Last Visit'];
     } else {
@@ -36,14 +36,12 @@ function renderTable($type, $data) {
                         <span class="slider"></span>
                     </label>
                   </td>';
-            echo "<td>{$row['amount']}</td>";
         }
 
         if ($type === 'doctors') {
-            echo '<td><img src="' . $row['image'] . '" class="profile-img" alt="Doctor"></td>';
+            echo '<td><img src="https://ui-avatars.com/api/?name=Doctor&background=cccccc&color=ffffff&size=40" class="profile-img" alt="Doctor"></td>';
             echo "<td>{$row['name']}</td>";
             echo "<td>{$row['speciality']}</td>";
-            echo "<td>{$row['memberSince']}</td>";
             echo "<td>{$row['patients']}</td>";
 
             // Nova kolona: Review (ocjena zvjezdicama)

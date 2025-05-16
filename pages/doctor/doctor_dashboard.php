@@ -85,17 +85,6 @@
                         </div>
                     </div>
 
-                    <!-- Total Users Chart -->
-                    <div class="col-md-6 mb-4">
-                        <div class="card">
-                            <div class="card-header">Total Patients & Doctors</div>
-                            <div class="card-body">
-                                <div id="totalUsersChart" style="height: 250px;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Review Chart -->
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="card-header">Average Doctor Review</div>
@@ -104,7 +93,6 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- Revenue Chart -->
                     <div class="col-md-6 mb-4">
                         <div class="card">
@@ -134,81 +122,69 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-
 <script>
+    // Mock data for testing
+    var mockData = [
+        { year: '2020', facility_id: 1, total_appointments: 120 },
+        { year: '2020', facility_id: 2, total_appointments: 80 },
+        { year: '2021', facility_id: 1, total_appointments: 100 },
+        { year: '2021', facility_id: 2, total_appointments: 70 },
+        { year: '2022', facility_id: 1, total_appointments: 130 },
+        { year: '2022', facility_id: 2, total_appointments: 90 },
+        { year: '2023', facility_id: 1, total_appointments: 110 },
+        { year: '2023', facility_id: 2, total_appointments: 75 },
+    ];
+
+    var linesData = [];
+    var barData = [];
+
+    // Process the mock data and organize it by year and facility
+    mockData.forEach(function(item) {
+        // For Line Chart: Group by year and facility_id
+        var lineData = linesData.find(function(d) { return d.year === item.year && d.facility_id === item.facility_id; });
+        if (lineData) {
+            lineData.total_appointments += item.total_appointments;
+        } else {
+            linesData.push({
+                year: item.year,
+                facility_id: item.facility_id,
+                total_appointments: item.total_appointments
+            });
+        }
+
+        // For Bar Chart: Same structure, grouped by year and facility_id
+        barData.push({
+            year: item.year,
+            facility_id: item.facility_id,
+            total_appointments: item.total_appointments
+        });
+    });
+
+    // Create the Line Chart
     Morris.Line({
         element: 'statusChart',
-        data: [
-            { year: '2015', blue: 100, orange: 30 },
-            { year: '2016', blue: 20, orange: 60 },
-            { year: '2017', blue: 90, orange: 120 },
-            { year: '2018', blue: 50, orange: 80 },
-            { year: '2019', blue: 120, orange: 150 }
-        ],
+        data: linesData,
         xkey: 'year',
-        ykeys: ['blue', 'orange'],
-        labels: ['Blue Line', 'Orange Line'],
-        lineColors: ['#1e88e5', '#ff9800'],
-        pointSize: 4,
-        pointStrokeColors: ['#1e88e5', '#ff9800'],
-        pointFillColors: ['#fff', '#fff'],
-        pointStrokeWidth: 2,
-        lineWidth: 2,
-        grid: true,
-        gridTextColor: '#888',
-        hideHover: 'auto',
-        smooth: false,
-        axes: true,
-        resize: true,
-        ymax: 200,
-        ymin: 0
+        ykeys: ['total_appointments'],
+        labels: ['Total Appointments'],
+        lineColors: ['#1e88e5', '#ff9800'], // Different colors for each facility
+        xLabelAngle: 60,
+        resize: true
     });
 
-    Morris.Bar({
-        element: 'totalUsersChart',
-        data: [
-            { label: 'Patients', value: 320 },
-            { label: 'Doctors', value: 45 }
-        ],
-        xkey: 'label',
-        ykeys: ['value'],
-        labels: ['Total'],
-        barColors: ['#17a2b8'],
-        resize: true,
-        hideHover: 'auto'
-    });
-
+    // Create the Bar Chart
     Morris.Bar({
         element: 'reviewChart',
-        data: [
-            { doctor: 'Dr. A', rating: 4.2 },
-            { doctor: 'Dr. B', rating: 4.7 },
-            { doctor: 'Dr. C', rating: 4.5 }
-        ],
-        xkey: 'doctor',
-        ykeys: ['rating'],
-        labels: ['Stars'],
-        barColors: ['#ffc107'],
+        data: barData,
+        xkey: 'year',
+        ykeys: ['total_appointments'],
+        labels: ['Total Appointments'],
+        barColors: ['#4caf50', '#f44336'], // Different colors for each facility
+        xLabelAngle: 60,
         resize: true,
-        hideHover: 'auto'
     });
 
-    Morris.Donut({
-        element: 'revenueDonutChart',
-        data: [
-            { label: 'Q1', value: 19500 },
-            { label: 'Q2', value: 30000 },
-            { label: 'Q3', value: 31500 },
-            { label: 'Q4', value: 39500 }
-        ],
-        colors: ['#4e73df', '#1cc88a', '#36b9cc', '#858796'],
-        resize: true,
-        formatter: function (value) {
-            return '$' + value.toLocaleString();
-        }
-    });
-
-    // ✅ Most Common Diagnoses Chart
+    // Most Common Diagnoses Chart
     Morris.Bar({
         element: 'diagnosisChart',
         data: [

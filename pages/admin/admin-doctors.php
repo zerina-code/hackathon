@@ -2,11 +2,13 @@
 include_once '../../components/table-component.php';
 $conn = include_once '../../db.php';  // connect to DB
 
-// Fetch doctors dynamically
+// Fetch doctors dynamically with patients count (if needed)
 $stmt = $conn->prepare("
-    SELECT u.user_id, u.first_name, u.last_name, d.specialization 
+    SELECT u.user_id, u.first_name, u.last_name, d.specialization, COUNT(a.patient_id) AS patient_count
     FROM users u 
     JOIN doctors d ON u.user_id = d.user_id
+    LEFT JOIN appointments a ON a.doctor_id = d.user_id
+    GROUP BY u.user_id, d.specialization
 ");
 $stmt->execute();
 $result = $stmt->get_result();
@@ -17,13 +19,14 @@ while ($row = $result->fetch_assoc()) {
     $doctors[] = [
         'name' => 'Dr. ' . $row['first_name'] . ' ' . $row['last_name'],
         'speciality' => $row['specialization'],
-        'memberSince' => 'N/A', // you can add date from DB if available
-        'patients' => 0, // you could count patients if you want by querying or joining
-        'status' => true, // or get from DB if you have a status field
-        'review' => 0 // dummy value, or add if you have review data
+        'memberSince' => 'N/A', // Add a date field here if available in the DB, e.g., u.registration_date
+        'patients' => $row['patient_count'], // Now correctly showing the number of patients for this doctor
+        'status' => true, // Replace this with the actual status field if available in the DB
+        'review' => 0 // Replace with actual review data if available, or leave as is
     ];
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

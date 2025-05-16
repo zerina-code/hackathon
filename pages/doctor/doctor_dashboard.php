@@ -1,45 +1,17 @@
-<?php
-// File: pages/doctor/doctor_dashboard.php
-
-session_start();
-
-// Compute project root
-$projectRoot = dirname(__DIR__, 2);
-
-// 1) Skip including db.php (database connection removed)
-
-// 2) Skip verifying $conn
-
-// 3) Include header for role guard
-$headerFile = $projectRoot . '/includes/header.php';
-if (!file_exists($headerFile)) {
-    die('Header include not found: ' . htmlspecialchars($headerFile));
-}
-require_once $headerFile;
-
-// 4) Ensure doctor session
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'doctor') {
-    header('Location: /login.php');
-    exit;
-}
-$doctorId = (int)$_SESSION['user_id'];
-
-// 5) Fake/empty patients array since DB logic is removed
-$patients = []; // You can fill this manually for testing if needed
-?>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/doctor/doctor.css">
     <title>Doctor Dashboard</title>
 </head>
 <body>
+
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <span class="navbar-brand">Welcome, Dr. <?= htmlspecialchars($_SESSION['name']) ?></span>
+        <span class="navbar-brand">Welcome, Dr. John Smith</span>
         <a href="/logout.php" class="btn btn-outline-light">Logout</a>
     </div>
 </nav>
@@ -51,20 +23,22 @@ $patients = []; // You can fill this manually for testing if needed
         <tr><th>Name</th><th>Email</th><th>Actions</th></tr>
         </thead>
         <tbody>
-        <?php if (empty($patients)): ?>
-            <tr><td colspan="3" class="text-muted">No patients available.</td></tr>
-        <?php else: ?>
-            <?php foreach ($patients as $p): ?>
-                <tr>
-                    <td><?= htmlspecialchars($p['name']) ?></td>
-                    <td><?= htmlspecialchars($p['email']) ?></td>
-                    <td>
-                        <button class="btn btn-sm btn-primary me-1" data-bs-toggle="modal" data-bs-target="#reportModal" data-patient-id="<?= $p['id'] ?>" data-patient-name="<?= htmlspecialchars($p['name']) ?>">New Report</button>
-                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#prescriptionModal" data-patient-id="<?= $p['id'] ?>" data-patient-name="<?= htmlspecialchars($p['name']) ?>">New Prescription</button>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        <?php endif; ?>
+        <tr>
+            <td>Jane Doe</td>
+            <td>jane@example.com</td>
+            <td>
+                <button class="btn btn-sm btn-primary me-1" data-bs-toggle="modal" data-bs-target="#reportModal" data-patient-id="1" data-patient-name="Jane Doe">New Report</button>
+                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#prescriptionModal" data-patient-id="1" data-patient-name="Jane Doe">New Prescription</button>
+            </td>
+        </tr>
+        <tr>
+            <td>Mark Allen</td>
+            <td>mark@example.com</td>
+            <td>
+                <button class="btn btn-sm btn-primary me-1" data-bs-toggle="modal" data-bs-target="#reportModal" data-patient-id="2" data-patient-name="Mark Allen">New Report</button>
+                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#prescriptionModal" data-patient-id="2" data-patient-name="Mark Allen">New Prescription</button>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -78,7 +52,7 @@ $patients = []; // You can fill this manually for testing if needed
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <input type="hidden" name="doctor_id" value="<?= $doctorId ?>">
+                <input type="hidden" name="doctor_id" value="123">
                 <input type="hidden" name="patient_id" id="reportPatientId">
                 <div class="mb-3">
                     <label for="reportFindings" class="form-label">Findings</label>
@@ -94,5 +68,22 @@ $patients = []; // You can fill this manually for testing if needed
                 <button type="submit" class="btn btn-primary">Save Report</button>
             </div>
         </form>
-        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS for modals -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Optional: populate hidden input with patient ID when opening modal
+    const reportModal = document.getElementById('reportModal');
+    reportModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        const patientId = button.getAttribute('data-patient-id');
+        document.getElementById('reportPatientId').value = patientId;
+    });
+</script>
+
+</body>
+</html>
+
 

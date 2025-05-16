@@ -1,41 +1,35 @@
-<?php
-// File: pages/doctor/create_medical_report.php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Medical Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
 
-session_start();
+<div class="container mt-5">
+    <h2>Create Medical Report</h2>
 
-// 1) Compute project root (two levels up from pages/doctor)
-$projectRoot = dirname(__DIR__, 2);
+    <form action="/pages/doctor/create_medical_report.php" method="POST">
+        <!-- Hidden doctor and patient IDs (set manually or via JS) -->
+        <input type="hidden" name="doctor_id" value="123">
+        <input type="hidden" name="patient_id" value="456">
 
-// 2) Skip including db.php (removed database connection)
+        <div class="mb-3">
+            <label for="findings" class="form-label">Findings</label>
+            <textarea class="form-control" id="findings" name="findings" rows="5" required></textarea>
+        </div>
 
-// 3) Removed $conn verification
+        <div class="mb-3">
+            <label for="recommendations" class="form-label">Recommendations</label>
+            <textarea class="form-control" id="recommendations" name="recommendations" rows="4" required></textarea>
+        </div>
 
-// 4) Include your header/role-guard
-$hdr = $projectRoot . '/includes/header.php';
-if (! file_exists($hdr)) {
-    die('Cannot find header include at ' . htmlspecialchars($hdr));
-}
-require_once $hdr;
+        <button type="submit" class="btn btn-primary">Submit Report</button>
+    </form>
+</div>
 
-// 5) Ensure doctor is logged in
-if (! isset($_SESSION['user_id']) || $_SESSION['role'] !== 'doctor') {
-    header('Location: /login.php');
-    exit;
-}
-$doctorId = (int) $_SESSION['user_id'];
-
-// 6) Handle the POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $patientId      = (int) $_POST['patient_id'];
-    $findings       = $_POST['findings'];
-    $recommendations= $_POST['recommendations'];
-
-    // Since the DB connection is removed, we're skipping the insert logic
-
-    // Redirect back to history without inserting
-    header('Location: /pages/doctor/patient_history.php?patient=' . urlencode($patientId));
-    exit;
-}
-
-// If someone visits via GET
-echo "<p>No data posted. Please submit the report form.</p>";
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

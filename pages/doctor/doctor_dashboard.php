@@ -21,7 +21,6 @@
     #totalUsersChart, #reviewChart {
         cursor: pointer;
     }
-    /* Style Morris chart elements */
     .morris-hover.morris-default-style {
         border-radius: 4px;
         padding: 6px 12px;
@@ -55,10 +54,12 @@
             <li class="nav-item"><a class="nav-link" href="doctor_dashboard.php">Dashboard</a></li>
             <li class="nav-item"><a class="nav-link" href="patients_list.php">Patients</a></li>
             <li class="nav-item"><a class="nav-link" href="add_diagnostic_procedure.php">Add Procedure</a></li>
-            <li class="nav-item"><a class="nav-link" href="view_medical_records.php">Medical Records</a></li>
-            <li class="nav-item"><a class="nav-link" href="view_medical_orders.php">Medical Orders</a></li>
-            <li class="nav-item"><a class="nav-link" href="all_perscriptions.php">Prescriptions</a></li>
-            <li class="nav-item"><a class="nav-link active" href="appointment_approve.php">Appointments</a></li>
+<!--            <li class="nav-item"><a class="nav-link" href="view_medical_records.php">Medical Records</a></li>-->
+<!--            <li class="nav-item"><a class="nav-link" href="view_medical_orders.php">Medical Orders</a></li>-->
+<!--            <li class="nav-item"><a class="nav-link" href="all_perscriptions.php">Prescriptions</a></li>-->
+            <li class="nav-item"><a class="nav-link" href="appointment_approve.php">Appointments</a></li>
+            <!-- ✅ Patient History added -->
+<!--            <li class="nav-item"><a class="nav-link" href="patient_history.php">Patient History</a></li>-->
         </ul>
     </nav>
 
@@ -76,8 +77,8 @@
                 </a>
             </div>
         </header>
-        <main>
 
+        <main>
             <div class="container mt-4">
                 <div class="row">
                     <!-- Status Chart -->
@@ -90,7 +91,7 @@
                         </div>
                     </div>
 
-                    <!-- Total Patients & Doctors -->
+                    <!-- Total Users Chart -->
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="card-header">Total Patients & Doctors</div>
@@ -100,7 +101,7 @@
                         </div>
                     </div>
 
-                    <!-- Average Doctor Review -->
+                    <!-- Review Chart -->
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="card-header">Average Doctor Review</div>
@@ -110,7 +111,7 @@
                         </div>
                     </div>
 
-                    <!-- Revenue-->
+                    <!-- Revenue Chart -->
                     <div class="col-md-6 mb-4">
                         <div class="card">
                             <div class="card-header">Monthly Revenue Breakdown</div>
@@ -122,7 +123,6 @@
                 </div>
             </div>
         </main>
-
     </div>
 </div>
 
@@ -161,7 +161,6 @@
         ymin: 0
     });
 
-    // Total Users (Bar)
     Morris.Bar({
         element: 'totalUsersChart',
         data: [
@@ -173,13 +172,9 @@
         labels: ['Total'],
         barColors: ['#17a2b8'],
         resize: true,
-        hideHover: 'auto',
-        onclick: function(i, row) {
-            alert(`You clicked on ${row.label} with a count of ${row.value}`);
-        }
+        hideHover: 'auto'
     });
 
-    // Review Ratings (Bar)
     Morris.Bar({
         element: 'reviewChart',
         data: [
@@ -192,11 +187,9 @@
         labels: ['Stars'],
         barColors: ['#ffc107'],
         resize: true,
-        hideHover: 'auto',
-        onclick: function(i, row) {
-            alert(`Doctor ${row.doctor} has an average rating of ${row.rating} stars.`);
-        }
+        hideHover: 'auto'
     });
+
     Morris.Donut({
         element: 'revenueDonutChart',
         data: [
@@ -212,8 +205,6 @@
         }
     });
 </script>
-
-
 
 </body>
 </html>

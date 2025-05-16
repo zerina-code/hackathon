@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,89 +7,83 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom Doctor CSS -->
-    <link rel="stylesheet" href="/css/doctor/doctor.css">
+    <link rel="stylesheet" href="../../css/admin/sidebar.css" />
+    <link rel="stylesheet" href="../../css/admin/layout.css" />
 </head>
 <body>
+<div class="main-wrapper d-flex">
+    <!-- Sidebar -->
+    <nav class="sidebar bg-dark text-white p-3">
+        <div class="sidebar-header mb-4">
+            <a href="#" class="navbar-brand text-white">LOGO</a>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link" href="doctor_dashboard.php">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="patients_list.php">Patients</a></li>
+            <li class="nav-item"><a class="nav-link" href="add_diagnostic_procedure.php">Add Procedure</a></li>
+<!--            <li class="nav-item"><a class="nav-link" href="view_medical_records.php">Medical Records</a></li>-->
+<!--            <li class="nav-item"><a class="nav-link" href="view_medical_orders.php">Medical Orders</a></li>-->
+<!--            <li class="nav-item"><a class="nav-link" href="all_perscriptions.php">Prescriptions</a></li>-->
+            <li class="nav-item"><a class="nav-link" href="appointment_approve.php">Appointments</a></li>
+            <li class="nav-item"><a class="nav-link active" href="patient_history.php">Patient History</a></li>
+        </ul>
+    </nav>
 
-<!-- Navbar -->
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">Doctor Panel</span>
-        <a href="/logout.php" class="btn btn-outline-light btn-sm">Logout</a>
-    </div>
-</nav>
-
-<!-- Layout with Sidebar -->
-<div class="container-fluid">
-    <div class="row">
-        <!-- Sidebar -->
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar py-4">
-            <div class="position-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" href="doctor_dashboard.php">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="patients_list.php">Patients</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="add_diagnostic_procedure.php">Add Procedure</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="view_medical_records.php">Medical Records</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="view_medical_orders.php">Medical Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="all_perscriptions.php">Prescriptions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="appointment_approve.php">Appointments</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <!-- Content Area -->
+    <div class="content-area flex-grow-1">
+        <!-- Header -->
+        <header class="d-flex justify-content-between align-items-center p-3 bg-white border-bottom">
+            <h3 class="mb-0">Patient History</h3>
+            <a href="../../php/logout.php" class="btn btn-outline-dark btn-sm">Logout</a>
+        </header>
 
         <!-- Main Content -->
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
-            <h1>History for Jane Doe</h1>
-
-            <h3 class="mt-4">Appointments</h3>
-            <ul class="list-group mb-4">
-                <li class="list-group-item">2025-05-10 09:30 <span class="badge bg-success">Completed</span></li>
-                <li class="list-group-item">2025-05-17 10:00 <span class="badge bg-warning text-dark">Scheduled</span></li>
-            </ul>
-
-            <h3>Prescriptions</h3>
-            <ul class="list-group mb-4">
-                <li class="list-group-item">Paracetamol 500mg, 3x/day <small class="text-muted">(2025-05-10)</small></li>
-                <li class="list-group-item">Ibuprofen 200mg, 2x/day <small class="text-muted">(2025-05-05)</small></li>
-            </ul>
-
-            <h3>Medical Reports</h3>
-            <ul class="list-group mb-4">
-                <li class="list-group-item">
-                    <strong>Findings:</strong> Elevated temperature and fatigue<br>
-                    <strong>Recommendations:</strong> Rest and hydration<br>
-                    <small class="text-muted">(2025-05-10)</small>
-                </li>
-                <li class="list-group-item">
-                    <strong>Findings:</strong> Normal vital signs<br>
-                    <strong>Recommendations:</strong> Continue regular checkups<br>
-                    <small class="text-muted">(2025-04-28)</small>
-                </li>
-            </ul>
-
-            <a href="/pages/doctor/edit_patient.php?patient=123" class="btn btn-secondary">Edit Parameters</a>
+        <main class="p-4">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Patient</th>
+                        <th>Diagnosis</th>
+                        <th>Order</th>
+                        <th>Prescription</th>
+                        <th>Date of Visit</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>Hypertension</td>
+                        <td>Blood test – CBC</td>
+                        <td>Paracetamol 500mg</td>
+                        <td>2025-05-16</td>
+                    </tr>
+                    <tr>
+                        <td>Max William</td>
+                        <td>Back Pain</td>
+                        <td>X-ray – Lumbar</td>
+                        <td>Ibuprofen 400mg</td>
+                        <td>2025-05-15</td>
+                    </tr>
+                    <tr>
+                        <td>Taylor Swift</td>
+                        <td>Allergy</td>
+                        <td>Skin Prick Test</td>
+                        <td>Antihistamines</td>
+                        <td>2025-05-14</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>Flu</td>
+                        <td>Throat Swab</td>
+                        <td>Tamiflu</td>
+                        <td>2025-05-13</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </main>
     </div>
 </div>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

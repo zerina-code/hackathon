@@ -33,16 +33,17 @@ $medicalOrders = [
             <li class="nav-item"><a class="nav-link" href="doctor_dashboard.php">Dashboard</a></li>
             <li class="nav-item"><a class="nav-link" href="patients_list.php">Patients</a></li>
             <li class="nav-item"><a class="nav-link" href="add_diagnostic_procedure.php">Add Procedure</a></li>
-            <li class="nav-item"><a class="nav-link" href="view_medical_records.php">Medical Records</a></li>
-            <li class="nav-item"><a class="nav-link active" href="view_medical_orders.php">Medical Orders</a></li>
-            <li class="nav-item"><a class="nav-link" href="all_perscriptions.php">Prescriptions</a></li>
+<!--            <li class="nav-item"><a class="nav-link" href="view_medical_records.php">Medical Records</a></li>-->
+<!--            <li class="nav-item"><a class="nav-link active" href="view_medical_orders.php">Medical Orders</a></li>-->
+<!--            <li class="nav-item"><a class="nav-link" href="all_perscriptions.php">Prescriptions</a></li>-->
             <li class="nav-item"><a class="nav-link" href="appointment_approve.php">Appointments</a></li>
+            <!-- ✅ Newly added -->
+            <li class="nav-item"><a class="nav-link" href="patient_history.php">Patient History</a></li>
         </ul>
     </nav>
 
     <!-- Page Content -->
     <div class="content-area flex-grow-1">
-
         <!-- Header -->
         <header class="d-flex justify-content-end align-items-center p-3 bg-white border-bottom">
             <div class="d-flex align-items-center gap-3">
@@ -99,3 +100,4 @@ $medicalOrders = [
 </script>
 </body>
 </html>
+

@@ -13,12 +13,8 @@ $appointments = [
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap & DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <!-- Custom Admin Styles -->
-    <link rel="stylesheet" href="../../css/admin/header.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/doctor/doctor.css" />
     <link rel="stylesheet" href="../../css/admin/sidebar.css" />
     <link rel="stylesheet" href="../../css/admin/layout.css" />
 </head>
@@ -27,7 +23,10 @@ $appointments = [
     <!-- Sidebar -->
     <nav class="sidebar bg-dark text-white p-3">
         <div class="sidebar-header mb-4">
-            <a href="#" class="navbar-brand text-white">LOGO</a>
+            <a href="#" class="navbar-brand text-white">
+                <img src="../../assets/logo.png" alt="logo" style="height: 60px;">
+
+            </a>
         </div>
         <ul class="nav flex-column">
             <li class="nav-item"><a class="nav-link" href="doctor_dashboard.php">Dashboard</a></li>

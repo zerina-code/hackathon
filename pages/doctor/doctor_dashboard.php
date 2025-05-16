@@ -5,61 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard - Charts</title>
 
-    <!-- Bootstrap CSS & FontAwesome -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
-    <!-- Morris.js CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css" />
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../../css/admin/header.css" />
+    <!-- Bootstrap & Custom CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/doctor/doctor.css" />
     <link rel="stylesheet" href="../../css/admin/sidebar.css" />
     <link rel="stylesheet" href="../../css/admin/layout.css" />
-</head>
-<style>
-    #totalUsersChart, #reviewChart {
-        cursor: pointer;
-    }
-    .morris-hover.morris-default-style {
-        border-radius: 4px;
-        padding: 6px 12px;
-        background: rgba(255, 255, 255, 0.9);
-        border: 1px solid #ddd;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .chart-container {
-        max-width: 500px;
-        margin: 0 auto;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        padding: 20px;
-        border-radius: 5px;
-        background-color: #fff;
-    }
-    #statusChart {
-        height: 200px;
-        width: 100%;
-    }
-</style>
 
+    <style>
+        #totalUsersChart, #reviewChart, #diagnosisChart {
+            cursor: pointer;
+        }
+
+        .morris-hover.morris-default-style {
+            border-radius: 4px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .chart-container {
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        #statusChart {
+            height: 200px;
+            width: 100%;
+        }
+    </style>
+</head>
 <body>
 
 <div class="main-wrapper d-flex">
     <!-- Sidebar -->
     <nav class="sidebar bg-dark text-white p-3">
         <div class="sidebar-header mb-4">
-            <a href="#" class="navbar-brand text-white">LOGO</a>
+            <a href="#" class="navbar-brand text-white">
+                <img src="../../assets/logo.png" alt="logo" style="height: 60px;">
+            </a>
         </div>
         <ul class="nav flex-column">
             <li class="nav-item"><a class="nav-link" href="doctor_dashboard.php">Dashboard</a></li>
             <li class="nav-item"><a class="nav-link" href="patients_list.php">Patients</a></li>
             <li class="nav-item"><a class="nav-link" href="add_diagnostic_procedure.php">Add Procedure</a></li>
-<!--            <li class="nav-item"><a class="nav-link" href="view_medical_records.php">Medical Records</a></li>-->
-<!--            <li class="nav-item"><a class="nav-link" href="view_medical_orders.php">Medical Orders</a></li>-->
-<!--            <li class="nav-item"><a class="nav-link" href="all_perscriptions.php">Prescriptions</a></li>-->
             <li class="nav-item"><a class="nav-link" href="appointment_approve.php">Appointments</a></li>
-            <!-- ✅ Patient History added -->
-<!--            <li class="nav-item"><a class="nav-link" href="patient_history.php">Patient History</a></li>-->
         </ul>
     </nav>
 
@@ -120,6 +114,16 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Most Common Diagnoses Chart -->
+                    <div class="col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-header">Most Common Diagnoses</div>
+                            <div class="card-body">
+                                <div id="diagnosisChart" style="height: 250px;"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -130,7 +134,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
     Morris.Line({
@@ -203,6 +206,24 @@
         formatter: function (value) {
             return '$' + value.toLocaleString();
         }
+    });
+
+    // ✅ Most Common Diagnoses Chart
+    Morris.Bar({
+        element: 'diagnosisChart',
+        data: [
+            { diagnosis: 'Flu', count: 85 },
+            { diagnosis: 'COVID-19', count: 60 },
+            { diagnosis: 'Diabetes', count: 45 },
+            { diagnosis: 'Hypertension', count: 35 },
+            { diagnosis: 'Allergies', count: 28 }
+        ],
+        xkey: 'diagnosis',
+        ykeys: ['count'],
+        labels: ['Cases'],
+        barColors: ['#8E7CC3'],
+        resize: true,
+        hideHover: 'auto'
     });
 </script>
 

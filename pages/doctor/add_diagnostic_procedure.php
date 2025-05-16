@@ -8,6 +8,7 @@
     <!-- Bootstrap & Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
     <!-- Custom Admin Styles -->
     <link rel="stylesheet" href="../../css/admin/header.css" />
@@ -51,28 +52,66 @@
         <main class="p-4">
             <h2 class="mb-4">Add Diagnostic Procedure</h2>
 
-            <form method="post" action="/doctor/add_diagnostic_procedure.php">
-                <div class="mb-3">
-                    <label for="patient" class="form-label">Patient</label>
-                    <select name="patient_id" id="patient" class="form-select" required>
-                        <option value="">– Select patient –</option>
-                        <option value="1">John Doe</option>
-                        <option value="2">Jane Smith</option>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label for="procedure" class="form-label">Procedure Description</label>
-                    <textarea name="procedure" id="procedure" class="form-control" rows="4" required></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            <table id="procedureTable" class="table table-bordered table-hover">
+                <thead class="table-light">
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Date of Birth</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Last Visit</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>John Doe</td>
+                    <td>1985-04-12</td>
+                    <td>123 Elm Street, Springfield</td>
+                    <td>(123) 456-7890</td>
+                    <td>2025-05-10</td>
+                    <td>
+                        <form method="post" action="/doctor/add_diagnostic_procedure.php">
+                            <input type="hidden" name="patient_id" value="1">
+                            <textarea name="procedure" class="form-control mb-2" rows="2" required placeholder="Procedure Description"></textarea>
+                            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>1990-07-20</td>
+                    <td>456 Oak Avenue, Riverside</td>
+                    <td>(321) 654-0987</td>
+                    <td>2025-05-12</td>
+                    <td>
+                        <form method="post" action="/doctor/add_diagnostic_procedure.php">
+                            <input type="hidden" name="patient_id" value="2">
+                            <textarea name="procedure" class="form-control mb-2" rows="2" required placeholder="Procedure Description"></textarea>
+                            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </main>
     </div>
 </div>
 
-<!-- Bootstrap JS -->
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#procedureTable').DataTable({
+            ordering: true,
+            searching: true
+        });
+    });
+</script>
 </body>
 </html>
+

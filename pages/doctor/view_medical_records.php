@@ -8,6 +8,7 @@
     <!-- Bootstrap & Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
     <!-- Custom Admin Styles -->
     <link rel="stylesheet" href="../../css/admin/header.css" />
@@ -51,26 +52,58 @@
         <main class="p-4">
             <h2 class="mb-4">Patient Medical Records</h2>
 
-            <form method="get" class="mb-4">
-                <label for="patient_id" class="form-label">Select Patient</label>
-                <select name="patient_id" id="patient_id" class="form-select mb-3" required>
-                    <option value="">-- Choose a patient --</option>
-                    <option value="1">Jane Doe</option>
-                    <option value="2">Mark Allen</option>
-                    <option value="3">Sarah Black</option>
-                </select>
-                <button class="btn btn-primary">View Records</button>
-            </form>
-
-            <!-- Placeholder -->
-            <div class="alert alert-info" role="alert">
-                Select a patient to view their medical records.
-            </div>
+            <table id="recordsTable" class="table table-bordered table-hover">
+                <thead class="table-light">
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Date of Birth</th>
+                    <th>Diagnosis</th>
+                    <th>Treatment</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Jane Doe</td>
+                    <td>1985-04-12</td>
+                    <td>Hypertension</td>
+                    <td>Medication + Lifestyle changes</td>
+                    <td>2025-05-10</td>
+                </tr>
+                <tr>
+                    <td>Mark Allen</td>
+                    <td>1979-11-23</td>
+                    <td>Diabetes</td>
+                    <td>Insulin Therapy</td>
+                    <td>2025-05-12</td>
+                </tr>
+                <tr>
+                    <td>Sarah Black</td>
+                    <td>1990-06-15</td>
+                    <td>Allergy</td>
+                    <td>Antihistamines</td>
+                    <td>2025-05-14</td>
+                </tr>
+                </tbody>
+            </table>
         </main>
     </div>
 </div>
 
-<!-- Bootstrap JS -->
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#recordsTable').DataTable({
+            ordering: true,
+            searching: true
+        });
+    });
+</script>
 </body>
 </html>
+

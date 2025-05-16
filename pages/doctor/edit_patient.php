@@ -1,50 +1,3 @@
-<?php
-// File: pages/doctor/edit_patient.php
-
-session_start();
-
-// Compute project root
-$projectRoot = dirname(__DIR__, 2);
-
-// 1) Skip including db.php (database connection removed)
-
-// 2) Skip verifying $conn
-
-// 3) Include header for role guard
-$headerFile = $projectRoot . '/includes/header.php';
-if (! file_exists($headerFile)) {
-    die('Header include not found: ' . htmlspecialchars($headerFile));
-}
-require_once $headerFile;
-
-// 4) Ensure doctor session
-if (! isset($_SESSION['user_id']) || $_SESSION['role'] !== 'doctor') {
-    header('Location: /login.php');
-    exit;
-}
-
-// 5) Get patient ID from query string
-if (isset($_GET['patient']) && trim($_GET['patient']) !== '') {
-    $patientId = (int) $_GET['patient'];
-} else {
-    die('Patient not specified.');
-}
-
-// 6) Handle form submission (DB interaction removed)
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $weight       = $_POST['weight'];
-    $bp_systolic  = $_POST['bp_systolic'];
-    $bp_diastolic = $_POST['bp_diastolic'];
-
-    // Normally here we would update the database
-
-    header('Location: /pages/doctor/patient_history.php?patient=' . urlencode($patientId));
-    exit;
-}
-
-// 7) Fetch vitals — now simulated as empty (DB logic removed)
-$vitals = []; // Empty array, mock or test values can be added if needed
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -56,6 +9,28 @@ $vitals = []; // Empty array, mock or test values can be added if needed
 </head>
 <body>
 <div class="container my-4">
-    <h1>Edit Parameters for Patient #<?= htmlspecialchars($patientId) ?></h1>
+    <h1>Edit Parameters for Patient #123</h1>
     <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">First Name</label>
+            <input type="text" name="first_name" class="form-control" value="Jane">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" name="last_name" class="form-control" value="Doe">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" value="jane@example.com">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input type="text" name="phone" class="form-control" value="123-456-7890">
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+</body>
+</html>
+
 

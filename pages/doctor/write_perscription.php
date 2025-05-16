@@ -1,36 +1,4 @@
-<?php
-// File: pages/doctor/write_prescription.php
 
-session_start();
-
-// Compute project root
-$projectRoot = dirname(__DIR__, 2);
-
-// 1) Skip including db.php (database connection removed)
-
-// 2) Skip verifying $conn
-
-// 3) Include header for role guard
-$headerFile = $projectRoot . '/includes/header.php';
-if (!file_exists($headerFile)) {
-    die('Header include not found: ' . htmlspecialchars($headerFile));
-}
-require_once $headerFile;
-
-// 4) Ensure doctor session
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'doctor') {
-    header('Location: /login.php');
-    exit;
-}
-$doctorId = (int)$_SESSION['user_id'];
-
-// 5) Simulated list of patients since DB logic is removed
-$patients = [
-    ['id' => 1, 'name' => 'John Doe'],
-    ['id' => 2, 'name' => 'Jane Smith'],
-    ['id' => 3, 'name' => 'Mark Lee'],
-];
-?>
 <!doctype html>
 <html lang="en">
 <head>

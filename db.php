@@ -13,4 +13,5 @@ if ($conn->connect_error) {
 
 // Ako je konekcija uspješna
 // echo "Uspješno povezano s bazom podataka!";
+return $conn;
 ?>

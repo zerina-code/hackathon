@@ -1,38 +1,30 @@
 <?php
 include_once '../../components/table-component.php';
+$conn = include_once '../../db.php';  // connect to DB
 
-$doctors = [
-    [
-        'image' => 'https://via.placeholder.com/40',
-        'name' => 'Dr. Ruby Perrin',
-        'speciality' => 'Dental',
-        'memberSince' => '2017',
-        'patients' => 200,
-        'status' => true,
-        'review' => 4.5, // Dodano
-    ],
-    [
-        'image' => 'https://via.placeholder.com/40',
-        'name' => 'Dr. Sofia Brient',
-        'speciality' => 'Urology',
-        'memberSince' => '2018',
-        'patients' => 120,
-        'status' => true,
-        'review' => 3.0, // Dodano
-    ],
-    [
-        'image' => 'https://via.placeholder.com/40',
-        'name' => 'Dr. Liam Carter',
-        'speciality' => 'Cardiology',
-        'memberSince' => '2020',
-        'patients' => 95,
-        'status' => true,
-        'review' => 5.0, // Dodano
+// Fetch doctors dynamically
+$stmt = $conn->prepare("
+    SELECT u.user_id, u.first_name, u.last_name, d.specialization 
+    FROM users u 
+    JOIN doctors d ON u.user_id = d.user_id
+");
+$stmt->execute();
+$result = $stmt->get_result();
 
-    ],
-];
+$doctors = [];
 
+while ($row = $result->fetch_assoc()) {
+    $doctors[] = [
+        'name' => 'Dr. ' . $row['first_name'] . ' ' . $row['last_name'],
+        'speciality' => $row['specialization'],
+        'memberSince' => 'N/A', // you can add date from DB if available
+        'patients' => 0, // you could count patients if you want by querying or joining
+        'status' => true, // or get from DB if you have a status field
+        'review' => 0 // dummy value, or add if you have review data
+    ];
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -26,10 +26,12 @@
             <li class="nav-item"><a class="nav-link" href="doctor_dashboard.php">Dashboard</a></li>
             <li class="nav-item"><a class="nav-link" href="patients_list.php">Patients</a></li>
             <li class="nav-item"><a class="nav-link" href="add_diagnostic_procedure.php">Add Procedure</a></li>
-            <li class="nav-item"><a class="nav-link active" href="view_medical_records.php">Medical Records</a></li>
-            <li class="nav-item"><a class="nav-link" href="view_medical_orders.php">Medical Orders</a></li>
-            <li class="nav-item"><a class="nav-link" href="all_perscriptions.php">Prescriptions</a></li>
+<!--            <li class="nav-item"><a class="nav-link active" href="view_medical_records.php">Medical Records</a></li>-->
+<!--            <li class="nav-item"><a class="nav-link" href="view_medical_orders.php">Medical Orders</a></li>-->
+<!--            <li class="nav-item"><a class="nav-link" href="all_perscriptions.php">Prescriptions</a></li>-->
             <li class="nav-item"><a class="nav-link" href="appointment_approve.php">Appointments</a></li>
+            <li class="nav-item"><a class="nav-link" href="patient_history.php">Patient History</a></li>
+
         </ul>
     </nav>
 
@@ -50,7 +52,7 @@
 
         <!-- Main Content -->
         <main class="p-4">
-            <h2 class="mb-4">Patient Medical Records</h2>
+            <h2 class="mb-4">Medical Records</h2>
 
             <table id="recordsTable" class="table table-bordered table-hover">
                 <thead class="table-light">

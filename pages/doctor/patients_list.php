@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Add Diagnostic Procedure</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap & Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,10 +28,11 @@
             <li class="nav-item"><a class="nav-link" href="doctor_dashboard.php">Dashboard</a></li>
             <li class="nav-item"><a class="nav-link" href="patients_list.php">Patients</a></li>
             <li class="nav-item"><a class="nav-link active" href="add_diagnostic_procedure.php">Add Procedure</a></li>
-            <li class="nav-item"><a class="nav-link" href="view_medical_records.php">Medical Records</a></li>
-            <li class="nav-item"><a class="nav-link" href="view_medical_orders.php">Medical Orders</a></li>
-            <li class="nav-item"><a class="nav-link" href="all_perscriptions.php">Prescriptions</a></li>
+<!--            <li class="nav-item"><a class="nav-link" href="view_medical_records.php">Medical Records</a></li>-->
+<!--            <li class="nav-item"><a class="nav-link" href="view_medical_orders.php">Medical Orders</a></li>-->
+<!--            <li class="nav-item"><a class="nav-link" href="all_perscriptions.php">Prescriptions</a></li>-->
             <li class="nav-item"><a class="nav-link" href="appointment_approve.php">Appointments</a></li>
+<!--            <li class="nav-item"><a class="nav-link" href="patient_history.php">Patient History</a></li>-->
         </ul>
     </nav>
 
@@ -63,7 +64,8 @@
                     <th>Address</th>
                     <th>Phone</th>
                     <th>Last Visit</th>
-                    <th>Action</th>
+                    <th>Facility</th>
+                    <th>View Procedures</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -73,15 +75,24 @@
                     <td>123 Elm Street, Springfield</td>
                     <td>(123) 456-7890</td>
                     <td>2025-05-10</td>
+                    <td>Springfield Medical Center</td>
                     <td>
-                        <form action="/doctor/add_diagnostic_procedure.php" method="POST">
-                            <input type="hidden" name="patient_id" value="1">
-                            <div class="mb-2">
-                                <label for="procedure1" class="form-label">Procedure Description</label>
-                                <textarea name="procedure" id="procedure1" class="form-control" rows="2" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-                        </form>
+                        <a href="add_diagnostic_procedure.php?patient_id=1" class="btn btn-sm btn-outline-primary">
+                            View
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>1990-07-20</td>
+                    <td>456 Oak Avenue, Riverside</td>
+                    <td>(321) 654-0987</td>
+                    <td>2025-05-12</td>
+                    <td>Riverside Health Clinic</td>
+                    <td>
+                        <a href="add_diagnostic_procedure.php?patient_id=2" class="btn btn-sm btn-outline-primary">
+                            View
+                        </a>
                     </td>
                 </tr>
                 </tbody>
@@ -105,3 +116,4 @@
 </script>
 </body>
 </html>
+

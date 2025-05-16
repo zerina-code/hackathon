@@ -1,117 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Add Diagnostic Procedure</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap & Font Awesome -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-
-    <!-- Custom Admin Styles -->
-    <link rel="stylesheet" href="../../css/admin/header.css" />
-    <link rel="stylesheet" href="../../css/admin/sidebar.css" />
-    <link rel="stylesheet" href="../../css/admin/layout.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Patient Detail & History</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-<div class="main-wrapper d-flex">
-    <!-- Sidebar -->
-    <nav class="sidebar bg-dark text-white p-3">
-        <div class="sidebar-header mb-4">
-            <a href="#" class="navbar-brand text-white">LOGO</a>
-        </div>
-        <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link" href="doctor_dashboard.php">Dashboard</a></li>
-            <li class="nav-item"><a class="nav-link" href="patients_list.php">Patients</a></li>
-            <li class="nav-item"><a class="nav-link active" href="add_diagnostic_procedure.php">Add Procedure</a></li>
-            <li class="nav-item"><a class="nav-link" href="view_medical_records.php">Medical Records</a></li>
-            <li class="nav-item"><a class="nav-link" href="view_medical_orders.php">Medical Orders</a></li>
-            <li class="nav-item"><a class="nav-link" href="all_perscriptions.php">Prescriptions</a></li>
-            <li class="nav-item"><a class="nav-link" href="appointment_approve.php">Appointments</a></li>
-        </ul>
-    </nav>
+<div class="container mt-5">
+    <h2 class="mb-4">Patient: <strong>John Doe</strong></h2>
+    <p><strong>Date of Birth:</strong> 1985-04-12</p>
+    <p><strong>Address:</strong> 123 Elm Street, Springfield</p>
+    <p><strong>Phone:</strong> (123) 456-7890</p>
 
-    <!-- Page Content -->
-    <div class="content-area flex-grow-1">
-        <!-- Header -->
-        <header class="d-flex justify-content-end align-items-center p-3 bg-white border-bottom">
-            <div class="d-flex align-items-center gap-3">
-                <div class="position-relative">
-                    <i class="fa fa-bell fa-lg"></i>
-                    <span class="badge badge-danger position-absolute" style="top: -5px; right: -10px;">3</span>
-                </div>
-                <a href="../../php/logout.php" class="text-dark" title="Logout">
-                    <i class="fas fa-sign-out-alt fa-lg"></i>
-                </a>
-            </div>
-        </header>
-
-        <!-- Main Content -->
-        <main class="p-4">
-            <h2 class="mb-4">Add Diagnostic Procedure</h2>
-
-            <table id="procedureTable" class="table table-bordered table-hover">
-                <thead class="table-light">
-                <tr>
-                    <th>Patient Name</th>
-                    <th>Date of Birth</th>
-                    <th>Address</th>
-                    <th>Phone</th>
-                    <th>Last Visit</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>John Doe</td>
-                    <td>1985-04-12</td>
-                    <td>123 Elm Street, Springfield</td>
-                    <td>(123) 456-7890</td>
-                    <td>2025-05-10</td>
-                    <td>
-                        <form method="post" action="/doctor/add_diagnostic_procedure.php">
-                            <input type="hidden" name="patient_id" value="1">
-                            <textarea name="procedure" class="form-control mb-2" rows="2" required placeholder="Procedure Description"></textarea>
-                            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-                        </form>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Jane Smith</td>
-                    <td>1990-07-20</td>
-                    <td>456 Oak Avenue, Riverside</td>
-                    <td>(321) 654-0987</td>
-                    <td>2025-05-12</td>
-                    <td>
-                        <form method="post" action="/doctor/add_diagnostic_procedure.php">
-                            <input type="hidden" name="patient_id" value="2">
-                            <textarea name="procedure" class="form-control mb-2" rows="2" required placeholder="Procedure Description"></textarea>
-                            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-                        </form>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </main>
+    <!-- ✅ Success Message -->
+    <div id="successAlert" class="alert alert-success d-none" role="alert">
+        Successfully entered!
     </div>
+
+    <!-- ✅ History Table -->
+    <h4 class="mt-5">Patient History</h4>
+    <table id="historyTable" class="table table-bordered">
+        <thead class="table-light">
+        <tr>
+            <th>Date</th>
+            <th>Diagnosis</th>
+            <th>Order</th>
+            <th>Prescription</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Entries will be prepended here -->
+        </tbody>
+    </table>
+
+    <!-- ✅ Add New Entry Form -->
+    <h4 class="mt-5">Add Diagnostic Entry</h4>
+    <form id="entryForm">
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea class="form-control" id="description" rows="3" required></textarea>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <label class="form-label">Diagnosis</label>
+                <input type="text" id="diagnosis" class="form-control" />
+            </div>
+            <div class="col">
+                <label class="form-label">Order</label>
+                <input type="text" id="order" class="form-control" />
+            </div>
+            <div class="col">
+                <label class="form-label">Prescription</label>
+                <input type="text" id="prescription" class="form-control" />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 
-<!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-
 <script>
-    $(document).ready(function () {
-        $('#procedureTable').DataTable({
-            ordering: true,
-            searching: true
-        });
+    document.getElementById('entryForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const desc = document.getElementById('description').value.trim();
+        const diagnosis = document.getElementById('diagnosis').value.trim();
+        const order = document.getElementById('order').value.trim();
+        const prescription = document.getElementById('prescription').value.trim();
+
+        if (!diagnosis && !order && !prescription) {
+            alert("Please fill at least one of Diagnosis, Order, or Prescription.");
+            return;
+        }
+
+        const today = new Date().toISOString().split('T')[0];
+        const table = document.getElementById('historyTable').querySelector('tbody');
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+    <td>${today}</td>
+    <td>${diagnosis}</td>
+    <td>${order}</td>
+    <td>${prescription}</td>
+  `;
+        table.prepend(row);
+
+        // Reset form
+        document.getElementById('entryForm').reset();
+
+        // Show success
+        const successAlert = document.getElementById('successAlert');
+        successAlert.classList.remove('d-none');
+        setTimeout(() => successAlert.classList.add('d-none'), 3000);
     });
 </script>
 </body>
 </html>
+
+
 
